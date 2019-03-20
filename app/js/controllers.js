@@ -2456,7 +2456,7 @@ angular.module('myApp.controllers', ['myApp.i18n'])
       replySelect(messageID, true)
     })
     $scope.$on('edit_selected', function (e, messageID) {
-      setEditDraft(messageID, true)
+      setEditDraft(messageID)
     })
 
     $scope.$on('ui_typing', onTyping)
