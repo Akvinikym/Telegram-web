@@ -46,6 +46,14 @@
   })
 
   function getPopularEmoji (callback) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
     ConfigStorage.get('emojis_popular', function (popEmojis) {
       var result = []
       if (popEmojis && popEmojis.length) {
@@ -79,6 +87,14 @@
   }
 
   function pushPopularEmoji (code) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log(sCallerName);
+
     getPopularEmoji(function (popularEmoji) {
       var exists = false
       var count = popularEmoji.length
@@ -105,6 +121,14 @@
   }
 
   function indexEmojis () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log(sCallerName);
+
     if (index === false) {
       index = SearchIndexManager.createIndex()
       var shortcut
@@ -117,6 +141,14 @@
   }
 
   function searchEmojis (q) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log(sCallerName);
+
     indexEmojis()
     var foundObject = SearchIndexManager.search(q, index)
     var foundCodes = []
@@ -142,6 +174,11 @@
 })(window, Config.Emoji, Config.EmojiCategories, Config.EmojiCategorySpritesheetDimens)
 
 function EmojiTooltip (btnEl, options) {
+  var myName = arguments.callee.toString()
+  myName = myName.substr('function '.length)
+  myName = myName.substr(0, myName.indexOf('('))
+  console.log('FUNCTION CALL: ' + myName)
+
   options = options || {}
   var self = this
 
@@ -639,6 +676,11 @@ EmojiTooltip.prototype.hide = function () {
 }
 
 function EmojiPanel (containerEl, options) {
+  var myName = arguments.callee.toString()
+  myName = myName.substr('function '.length)
+  myName = myName.substr(0, myName.indexOf('('))
+  console.log('FUNCTION CALL: ' + myName)
+
   options = options || {}
   var self = this
 
@@ -695,6 +737,11 @@ EmojiPanel.prototype.update = function () {
 }
 
 function MessageComposer (textarea, options) {
+  var myName = arguments.callee.toString()
+  myName = myName.substr('function '.length)
+  myName = myName.substr(0, myName.indexOf('('))
+  console.log('FUNCTION CALL: ' + myName)
+
   var self = this
 
   this.textareaEl = $(textarea)

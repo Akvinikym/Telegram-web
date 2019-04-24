@@ -24,6 +24,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     })
 
     function telegramMeNotify (newValue) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (telegramMeNotified !== newValue) {
         telegramMeNotified = newValue
         TelegramMeWebService.setAuthorized(telegramMeNotified)
@@ -31,6 +39,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function mtpSetUserAuth (dcID, userAuth) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var fullUserAuth = angular.extend({dcID: dcID}, userAuth)
       Storage.set({
         dc: dcID,
@@ -42,7 +58,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
       baseDcID = dcID
     }
 
-    function mtpLogOut () {
+    function mtpLogOut () {          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var storageKeys = []
       for (var dcID = 1; dcID <= 5; dcID++) {
         storageKeys.push('dc' + dcID + '_auth_key')
@@ -71,7 +94,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
       })
     }
 
-    function mtpClearStorage () {
+    function mtpClearStorage () {          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var saveKeys = ['user_auth', 't_user_auth', 'dc', 't_dc']
       for (var dcID = 1; dcID <= 5; dcID++) {
         saveKeys.push('dc' + dcID + '_auth_key')
@@ -94,6 +124,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function mtpGetNetworker (dcID, options) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
 
       var cache = (options.fileUpload || options.fileDownload)
@@ -147,6 +185,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function mtpInvokeApi (method, params, options) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
 
       var deferred = $q.defer()
@@ -288,6 +334,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function mtpGetUserID () {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return Storage.get('user_auth').then(function (auth) {
         telegramMeNotify(auth && auth.id > 0 || false)
         return auth.id || 0
@@ -295,6 +349,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function getBaseDcID () {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return baseDcID || false
     }
 
@@ -319,6 +381,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     var downloadActives = {}
 
     function downloadRequest (dcID, cb, activeDelta) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (downloadPulls[dcID] === undefined) {
         downloadPulls[dcID] = []
         downloadActives[dcID] = 0
@@ -336,6 +406,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     var index = 0
 
     function downloadCheck (dcID) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var downloadPull = downloadPulls[dcID]
       var downloadLimit = dcID == 'upload' ? 11 : 5
 
@@ -364,6 +442,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function getFileName (location) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       switch (location._) {
         case 'inputDocumentFileLocation':
           var fileName = (location.file_name || '').split('.', 2)
@@ -387,12 +473,28 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function getTempFileName (file) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var size = file.size || -1
       var random = nextRandomInt(0xFFFFFFFF)
       return '_temp' + random + '_' + size
     }
 
     function getCachedFile (location) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!location) {
         return false
       }
@@ -402,6 +504,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function getFileStorage () {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!Config.Modes.memory_only) {
         if (TmpfsFileStorage.isAvailable()) {
           return TmpfsFileStorage
@@ -414,6 +524,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function saveSmallFile (location, bytes) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var fileName = getFileName(location)
       var mimeType = 'image/jpeg'
 
@@ -428,6 +546,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function downloadSmallFile (location) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!FileManager.isAvailable()) {
         return $q.reject({type: 'BROWSER_BLOB_NOT_SUPPORTED'})
       }
@@ -482,6 +608,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function getDownloadedFile (location, size) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var fileStorage = getFileStorage()
       var fileName = getFileName(location)
 
@@ -489,6 +623,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function downloadFile (dcID, location, size, options) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!FileManager.isAvailable()) {
         return $q.reject({type: 'BROWSER_BLOB_NOT_SUPPORTED'})
       }
@@ -637,6 +779,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function uploadFile (file) {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var fileSize = file.size,
         isBigFile = fileSize >= 10485760,
         canceled = false,
@@ -752,6 +902,11 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     var initial = false
 
     function start () {
+      var myName = arguments.callee.toString();
+      myName = myName.substr('function '.length);
+      myName = myName.substr(0, myName.indexOf('('));
+      console.log("OH MY GOOOOOOOOOOOOD " + myName)
+
       if (!started && !Config.Navigator.mobile && !Config.Modes.packed) {
         started = true
 
@@ -768,6 +923,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function clearInstance () {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (masterInstance && !deactivated) {
         console.warn('clear master instance');
         Storage.remove('xt_instance')
@@ -775,6 +938,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function deactivateInstance () {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (masterInstance || deactivated) {
         return false
       }
@@ -803,6 +974,14 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
     }
 
     function checkInstance () {
+          var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (deactivated) {
         return false
       }

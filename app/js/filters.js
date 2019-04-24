@@ -13,6 +13,7 @@
 angular.module('myApp.filters', ['myApp.i18n'])
 
   .filter('userName', function (_) {
+    console.log('FUNCTION CALL: userName')
     return function (user) {
       if (!user || !user.first_name && !user.last_name) {
         return _('user_name_deleted')
@@ -22,6 +23,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('userFirstName', function (_) {
+    console.log('FUNCTION CALL: userFirstName')
     return function (user) {
       if (!user || !user.first_name && !user.last_name) {
         return _('user_first_name_deleted')
@@ -31,6 +33,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('userStatus', function ($filter, _) {
+    console.log('FUNCTION CALL: userStatus')
     var relativeTimeFilter = $filter('relativeTime')
     return function (user, botChatPrivacy) {
       if (user && !(user.id % 1000)) {
@@ -77,6 +80,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('chatTitle', function (_) {
+    console.log('FUNCTION CALL: chatTitle')
     return function (chat) {
       if (!chat || !chat.title) {
         return _('chat_title_deleted')
@@ -86,6 +90,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('dateOrTime', function ($filter) {
+    console.log('FUNCTION CALL: dateOrTime')
     var dateFilter = $filter('date')
 
     return function (timestamp, extended) {
@@ -107,6 +112,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('dateMedium', function ($filter) {
+    console.log('FUNCTION CALL: dateMedium')
     var dateFilter = $filter('date')
     return function (timestamp, extended) {
       var ticks = timestamp * 1000
@@ -115,6 +121,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('time', function ($filter) {
+    console.log('FUNCTION CALL: time')
     var cachedDates = {}
     var dateFilter = $filter('date')
     var format = Config.Mobile ? 'shortTime' : 'mediumTime'
@@ -129,6 +136,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('myDate', function ($filter) {
+    console.log('FUNCTION CALL: myDate')
     var cachedDates = {}
     var dateFilter = $filter('date')
 
@@ -142,6 +150,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('duration', [function () {
+    console.log('FUNCTION CALL: duration')
     return function (duration) {
       duration = parseInt(duration)
       if (isNaN(duration)) {
@@ -160,6 +169,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   }])
 
   .filter('durationRemains', function ($filter) {
+    console.log('FUNCTION CALL: durationRemains')
     var durationFilter = $filter('duration')
 
     return function (done, total) {
@@ -168,6 +178,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('phoneNumber', [function () {
+    console.log('FUNCTION CALL: phoneNumber')
     return function (phoneRaw) {
       var nbsp = ' '
       phoneRaw = (phoneRaw || '').replace(/\D/g, '')
@@ -179,6 +190,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   }])
 
   .filter('formatSize', [function () {
+    console.log('FUNCTION CALL: formatSize')
     return function (size, progressing) {
       if (!size) {
         return '0'
@@ -198,6 +210,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   }])
 
   .filter('formatSizeProgress', function ($filter, _) {
+    console.log('FUNCTION CALL: formatSizeProgress')
     var formatSizeFilter = $filter('formatSize')
     return function (progress) {
       if (!progress.total) {
@@ -216,6 +229,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('formatShortNumber', [function () {
+    console.log('FUNCTION CALL: formatShortNumber')
     return function (num) {
       var mult
       if (!num) {
@@ -232,12 +246,14 @@ angular.module('myApp.filters', ['myApp.i18n'])
   }])
 
   .filter('nl2br', [function () {
+    console.log('FUNCTION CALL: nl2br')
     return function (text) {
       return text.replace(/\n/g, '<br/>')
     }
   }])
 
   .filter('shortUrl', [function () {
+    console.log('FUNCTION CALL: shortUrl')
     return function (text) {
       if (typeof text !== 'string') {
         return text
@@ -247,6 +263,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   }])
 
   .filter('richText', function ($filter) {
+    console.log('FUNCTION CALL: richText')
     var linkyFilter = $filter('linky')
     return function (text) {
       return linkyFilter(text, '_blank').replace(/\n|&#10;/g, '<br/>')
@@ -254,6 +271,7 @@ angular.module('myApp.filters', ['myApp.i18n'])
   })
 
   .filter('relativeTime', function ($filter, _) {
+    console.log('FUNCTION CALL: relativeTime')
     var langMinutesPluralize = _.pluralize('relative_time_pluralize_minutes_ago')
     var langHoursPluralize = _.pluralize('relative_time_pluralize_hours_ago')
     var dateOrTimeFilter = $filter('dateOrTime')

@@ -26,6 +26,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     })
 
     function fillContacts () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (contactsFillPromise) {
         return contactsFillPromise
       }
@@ -48,6 +56,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getUserSearchText (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var user = users[id]
       if (!user) {
         return false
@@ -65,6 +81,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getContacts (query) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return fillContacts().then(function (contactsList) {
         if (angular.isString(query) && query.length) {
           var results = SearchIndexManager.search(query, contactsIndex)
@@ -92,14 +116,38 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function resolveUsername (username) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return usernames[username] || 0
     }
 
     function saveApiUsers (apiUsers) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       angular.forEach(apiUsers, saveApiUser)
     }
 
     function saveApiUser (apiUser, noReplace) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!angular.isObject(apiUser) ||
         noReplace && angular.isObject(users[apiUser.id]) && users[apiUser.id].first_name) {
         return
@@ -172,10 +220,26 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function saveUserAccess (id, accessHash) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       userAccess[id] = accessHash
     }
 
     function getUserStatusForSort (status) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (status) {
         var expires = status.expires || status.was_online
         if (expires) {
@@ -196,6 +260,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getUser (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (angular.isObject(id)) {
         return id
       }
@@ -203,19 +275,51 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getSelf () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return getUser(myID)
     }
 
     function isBot (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return users[id] && users[id].pFlags.bot
     }
 
     function hasUser (id, allowMin) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var user = users[id]
       return angular.isObject(user) && (allowMin || !user.pFlags.min)
     }
 
     function getUserPhoto (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var user = getUser(id)
 
       if (id == 333000) {
@@ -236,11 +340,27 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getUserString (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var user = getUser(id)
       return 'u' + id + (user.access_hash ? '_' + user.access_hash : '')
     }
 
     function getUserInput (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var user = getUser(id)
       if (user.pFlags.self) {
         return {_: 'inputUserSelf'}
@@ -253,6 +373,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function updateUsersStatuses () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var timestampNow = tsNow(true)
       angular.forEach(users, function (user) {
         if (user.status &&
@@ -267,6 +395,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function forceUserOnline (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (isBot(id)) {
         return
       }
@@ -291,12 +427,28 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapForFull (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var user = getUser(id)
 
       return user
     }
 
     function openUser (userID, override) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new()
       scope.userID = userID
       scope.override = override || {}
@@ -311,6 +463,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function importContact (phone, firstName, lastName) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('contacts.importContacts', {
         contacts: [{
           _: 'inputPhoneContact',
@@ -333,6 +493,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function importContacts (contacts) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var inputContacts = [],
         i
       var j
@@ -366,6 +534,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function deleteContacts (userIDs) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var ids = []
       angular.forEach(userIDs, function (userID) {
         ids.push(getUserInput(userID))
@@ -380,6 +556,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function onContactUpdated (userID, isContact) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       userID = parseInt(userID)
       if (angular.isArray(contactsList)) {
         var curPos = curIsContact = contactsList.indexOf(userID)
@@ -398,6 +582,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openImportContact () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return $modal.open({
         templateUrl: templateUrl('import_contact_modal'),
         controller: 'ImportContactModalController',
@@ -411,6 +603,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function setUserStatus (userID, offline) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (isBot(userID)) {
         return
       }
@@ -517,6 +717,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function isAvailable () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (Config.Mobile && Config.Navigator.ffos && Config.Modes.packed) {
         try {
           return navigator.mozContacts && navigator.mozContacts.getAll
@@ -529,6 +737,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openPhonebookImport () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return $modal.open({
         templateUrl: templateUrl('phonebook_modal'),
         controller: 'PhonebookModalController',
@@ -537,6 +753,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getPhonebookContacts () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       try {
         var request = window.navigator.mozContacts.getAll({})
       } catch (e) {
@@ -600,10 +824,26 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var cachedPhotoLocations = {}
 
     function saveApiChats (apiChats) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       angular.forEach(apiChats, saveApiChat)
     }
 
     function saveApiChat (apiChat) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!angular.isObject(apiChat)) {
         return
       }
@@ -650,10 +890,26 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getChat (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return chats[id] || {id: id, deleted: true, access_hash: channelAccess[id]}
     }
 
     function hasRights (id, action) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (chats[id] === undefined) {
         return false
       }
@@ -701,18 +957,50 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function resolveUsername (username) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return usernames[username] || 0
     }
 
     function saveChannelAccess (id, accessHash) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       channelAccess[id] = accessHash
     }
 
     function saveIsMegagroup (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       megagroups[id] = true
     }
 
     function isChannel (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var chat = chats[id]
       if (chat && (chat._ == 'channel' || chat._ == 'channelForbidden') ||
         channelAccess[id]) {
@@ -722,6 +1010,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function isMegagroup (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (megagroups[id]) {
         return true
       }
@@ -733,14 +1029,38 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function isBroadcast (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return isChannel(id) && !isMegagroup(id)
     }
 
     function getChatInput (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return id || 0
     }
 
     function getChannelInput (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!id) {
         return {_: 'inputChannelEmpty'}
       }
@@ -752,11 +1072,27 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function hasChat (id, allowMin) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var chat = chats[id]
       return angular.isObject(chat) && (allowMin || !chat.pFlags.min)
     }
 
     function getChatPhoto (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var chat = getChat(id)
 
       if (cachedPhotoLocations[id] === undefined) {
@@ -770,6 +1106,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getChatString (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var chat = getChat(id)
       if (isChannel(id)) {
         return (isMegagroup(id) ? 's' : 'c') + id + '_' + chat.access_hash
@@ -778,6 +1122,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapForFull (id, fullChat) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var chatFull = angular.copy(fullChat)
       var chat = getChat(id)
 
@@ -801,6 +1153,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapParticipants(id, participants) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var chat = getChat(id)
       var myID = AppUsersManager.getSelf().id
       if (isChannel(id)) {
@@ -829,6 +1189,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openChat (chatID, accessHash) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new()
       scope.chatID = chatID
 
@@ -883,6 +1251,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
 
   .service('AppPeersManager', function ($q, qSync, AppUsersManager, AppChatsManager, MtpApiManager) {
     function getInputPeer (peerString) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var firstChar = peerString.charAt(0)
       var peerParams = peerString.substr(1).split('_')
 
@@ -913,6 +1289,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getInputPeerByID (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!peerID) {
         return {_: 'inputPeerEmpty'}
       }
@@ -939,6 +1323,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getPeerSearchText (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var text
       if (peerID > 0) {
         text = '%pu ' + AppUsersManager.getUserSearchText(peerID)
@@ -950,6 +1342,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getPeerString (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (peerID > 0) {
         return AppUsersManager.getUserString(peerID)
       }
@@ -957,6 +1357,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getOutputPeer (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (peerID > 0) {
         return {_: 'peerUser', user_id: peerID}
       }
@@ -968,6 +1376,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function resolveUsername (username) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var searchUserName = SearchIndexManager.cleanUsername(username)
       if (searchUserName.match(/^\d+$/)) {
         return qSync.when(false)
@@ -996,6 +1412,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getPeerID (peerString) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (angular.isObject(peerString)) {
         return peerString.user_id
           ? peerString.user_id
@@ -1008,18 +1432,42 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getPeer (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return peerID > 0
         ? AppUsersManager.getUser(peerID)
         : AppChatsManager.getChat(-peerID)
     }
 
     function getPeerPhoto (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return peerID > 0
         ? AppUsersManager.getUserPhoto(peerID)
         : AppChatsManager.getChatPhoto(-peerID)
     }
 
     function getPeerMigratedTo(peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (peerID >= 0) {
         return false
       }
@@ -1031,22 +1479,62 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function isChannel (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return (peerID < 0) && AppChatsManager.isChannel(-peerID)
     }
 
     function isMegagroup (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return (peerID < 0) && AppChatsManager.isMegagroup(-peerID)
     }
 
     function isAnyGroup (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return (peerID < 0) && !AppChatsManager.isBroadcast(-peerID)
     }
 
     function isBroadcast (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return isChannel(id) && !isMegagroup(id)
     }
 
     function isBot (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return (peerID > 0) && AppUsersManager.isBot(peerID)
     }
 
@@ -1076,6 +1564,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var chatParticipantsPromises = {}
 
     function saveBotInfo (botInfo) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var botID = botInfo && botInfo.user_id
       if (!botID) {
         return false
@@ -1094,6 +1590,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getProfile (id, override) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('users.getFullUser', {
         id: AppUsersManager.getUserInput(id)
       }).then(function (userFull) {
@@ -1129,6 +1633,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getPeerBots (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerBots = []
       if (peerID >= 0 && !AppUsersManager.isBot(peerID) ||
         (AppPeersManager.isChannel(peerID) && !AppPeersManager.isMegagroup(peerID))) {
@@ -1153,6 +1665,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getChatFull (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (AppChatsManager.isChannel(id)) {
         return getChannelFull(id)
       }
@@ -1186,6 +1706,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getChatInviteLink (id, force) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return getChatFull(id).then(function (chatFull) {
         if (!force &&
           chatFull.exported_invite &&
@@ -1212,6 +1740,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getChannelParticipants (id, filter, limit, offset) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       filter = filter || {_: 'channelParticipantsRecent'}
       limit = limit || 200
       offset = offset || 0
@@ -1304,6 +1840,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getChannelFull (id, force) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (chatsFull[id] !== undefined && !force) {
         return $q.when(chatsFull[id])
       }
@@ -1353,6 +1897,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function invalidateChannelParticipants(id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       delete chatsFull[id]
       delete chatFullPromises[id]
       angular.forEach(chatParticipantsPromises, function (val, key) {
@@ -1364,6 +1916,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getChannelPinnedMessage(id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return getChannelFull(id).then(function (fullChannel) {
         var pinnedMessageID = fullChannel && fullChannel.pinned_msg_id
         if (!pinnedMessageID) {
@@ -1379,6 +1939,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function hideChannelPinnedMessage(id, pinnedMessageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var setKeys = {}
       setKeys['pinned_hidden' + id] = AppMessagesIDsManager.getMessageLocalID(pinnedMessageID)
       Storage.set(setKeys)
@@ -1486,6 +2054,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var windowH = $(window).height()
 
     function savePhoto (apiPhoto, context) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (context) {
         angular.extend(apiPhoto, context)
       }
@@ -1504,6 +2080,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function choosePhotoSize (photo, width, height) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (Config.Navigator.retina) {
         width *= 2
         height *= 2
@@ -1525,6 +2109,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getUserPhotos (userID, maxID, limit) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var inputUser = AppUsersManager.getUserInput(userID)
       return MtpApiManager.invokeApi('photos.getUserPhotos', {
         user_id: inputUser,
@@ -1548,6 +2140,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function preloadPhoto (photoID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!photos[photoID]) {
         return
       }
@@ -1576,10 +2176,26 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     $rootScope.preloadPhoto = preloadPhoto
 
     function getPhoto (photoID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return photos[photoID] || {_: 'photoEmpty'}
     }
 
     function wrapForHistory (photoID, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
       var photo = angular.copy(photos[photoID]) || {_: 'photoEmpty'}
       var width = options.website ? 64 : Math.min(windowW - 80, Config.Mobile ? 210 : 260)
@@ -1614,6 +2230,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapForFull (photoID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var photo = wrapForHistory(photoID)
       var fullWidth = $(window).width() - (Config.Mobile ? 0 : 32)
       var fullHeight = $($window).height() - (Config.Mobile ? 0 : 116)
@@ -1645,6 +2269,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openPhoto (photoID, list) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!photoID || photoID === '0') {
         return false
       }
@@ -1679,6 +2311,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function downloadPhoto (photoID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var photo = photos[photoID]
       var ext = 'jpg'
       var mimeType = 'image/jpeg'
@@ -1741,6 +2381,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var pendingWebPages = {}
 
     function saveWebPage (apiWebPage, messageID, mediaContext) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (apiWebPage.photo && apiWebPage.photo._ === 'photo') {
         AppPhotosManager.savePhoto(apiWebPage.photo, mediaContext)
       } else {
@@ -1821,6 +2469,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openEmbed (webpageID, messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new(true)
 
       scope.webpageID = webpageID
@@ -1836,6 +2492,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapForHistory (webPageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var webPage = angular.copy(webpages[webPageID]) || {_: 'webPageEmpty'}
 
       if (webPage.photo && webPage.photo.id) {
@@ -1849,6 +2513,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapForFull (webPageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var webPage = wrapForHistory(webPageID)
 
       if (!webPage.embed_url) {
@@ -1908,6 +2580,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var games = {}
 
     function saveGame (apiGame, messageID, mediaContext) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (apiGame.photo && apiGame.photo._ === 'photo') {
         AppPhotosManager.savePhoto(apiGame.photo, mediaContext)
       } else {
@@ -1932,6 +2612,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openGame (gameID, messageID, embedUrl) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new(true)
 
       scope.gameID = gameID
@@ -1948,6 +2636,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapForHistory (gameID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var game = angular.copy(games[gameID]) || {_: 'gameEmpty'}
 
       if (game.photo && game.photo.id) {
@@ -1961,6 +2657,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapForFull (gameID, msgID, embedUrl) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var game = wrapForHistory(gameID)
 
       var fullWidth = $(window).width() - (Config.Mobile ? 0 : 10)
@@ -2003,6 +2707,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var windowH = $(window).height()
 
     function saveDoc (apiDoc, context) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       docs[apiDoc.id] = apiDoc
 
       if (context) {
@@ -2108,14 +2820,38 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getDoc (docID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return docs[docID] || {_: 'documentEmpty'}
     }
 
     function hasDoc (docID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return docs[docID] !== undefined
     }
 
     function getFileName (doc) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (doc.file_name) {
         return doc.file_name
       }
@@ -2127,6 +2863,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapForHistory (docID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (docsForHistory[docID] !== undefined) {
         return docsForHistory[docID]
       }
@@ -2193,6 +2937,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function updateDocDownloaded (docID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var doc = docs[docID]
       var historyDoc = docsForHistory[docID] || doc || {}
       var inputFileLocation = {
@@ -2213,6 +2965,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function downloadDoc (docID, toFileEntry) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var doc = docs[docID]
       var historyDoc = docsForHistory[docID] || doc || {}
       var inputFileLocation = {
@@ -2272,6 +3032,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openDoc (docID, messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new(true)
       scope.docID = docID
       scope.messageID = messageID
@@ -2286,6 +3054,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function saveDocFile (docID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var doc = docs[docID]
       var historyDoc = docsForHistory[docID] || doc || {}
       var mimeType = doc.mime_type
@@ -2304,6 +3080,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function wrapVideoForFull (docID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var doc = wrapForHistory(docID)
       var fullWidth = Math.min($(window).width() - (Config.Mobile ? 0 : 60), 542)
       var fullHeight = $(window).height() - (Config.Mobile ? 92 : 150)
@@ -2330,6 +3114,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openVideo (docID, messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new(true)
       scope.docID = docID
       scope.messageID = messageID
@@ -2449,6 +3241,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getStickers (force) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return Storage.get('all_stickers').then(function (stickers) {
         var layer = Config.Schema.API.layer
         if (stickers.layer != layer ||
@@ -2485,6 +3285,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function processRawStickers (stickers) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (applied !== stickers.hash) {
         applied = stickers.hash
         var i
@@ -2535,6 +3343,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function indexStickerSetEmoticons(fullSet) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       angular.forEach(fullSet.packs, function (pack) {
         var emoji = pack.emoticon
         var emojiCode = false
@@ -2562,6 +3378,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function searchStickers(emojiCode) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return getPopularStickers().then(function () {
         // console.warn('search', emojiCode, emojiIndex, emojiIndex[emojiCode])
         var stickersList = emojiIndex[emojiCode]
@@ -2593,6 +3417,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getStickerSets (allStickers, prevCachedSets) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var promises = []
       var cachedSets = prevCachedSets || allStickers.fullSets || {}
       allStickers.fullSets = {}
@@ -2620,6 +3452,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getPopularStickers () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return Storage.get('stickers_popular').then(function (popStickers) {
         var result = []
         var i, len
@@ -2637,6 +3477,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function pushPopularSticker (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       getPopularStickers().then(function (popularStickers) {
         var exists = false
         var count = popularStickers.length
@@ -2663,6 +3511,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getStickerset (inputStickerset) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('messages.getStickerSet', {
         stickerset: inputStickerset
       }).then(function (result) {
@@ -2674,6 +3530,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function installStickerset (fullSet, uninstall) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var method = uninstall
         ? 'messages.uninstallStickerSet'
         : 'messages.installStickerSet'
@@ -2700,6 +3564,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openStickersetLink (shortName) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return openStickerset({
         _: 'inputStickerSetShortName',
         short_name: shortName
@@ -2707,6 +3579,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openStickerset (inputStickerset) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new(true)
       scope.inputStickerset = inputStickerset
       var modal = $modal.open({
@@ -2718,6 +3598,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getStickerSetsHash (stickerSets) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var acc = 0
       var set
       for (var i = 0; i < stickerSets.length; i++) {
@@ -2748,6 +3636,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getPopularBots () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return Storage.get('inline_bots_popular').then(function (bots) {
         var result = []
         var i, len
@@ -2770,6 +3666,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function pushPopularBot (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       getPopularBots().then(function (bots) {
         var exists = false
         var count = bots.length
@@ -2800,6 +3704,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function resolveInlineMention (username) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return AppPeersManager.resolveUsername(username).then(function (peerID) {
         if (peerID > 0) {
           var bot = AppUsersManager.getUser(peerID)
@@ -2831,6 +3743,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getInlineResults (peerID, botID, query, geo, offset) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('messages.getInlineBotResults', {
         flags: 0 | (geo ? 1 : 0),
         bot: AppUsersManager.getUserInput(botID),
@@ -2871,6 +3791,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function regroupWrappedResults (results, rowW, rowH) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!results ||
           !results[0] ||
           ['photo', 'gif', 'sticker'].indexOf(results[0].type) == -1) {
@@ -2946,6 +3874,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function switchToPM (fromPeerID, botID, startParam) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerString = AppPeersManager.getPeerString(fromPeerID)
       var setHash = {}
       setHash['inline_switch_pm' + botID] = {peer: peerString, time: tsNow()}
@@ -2957,6 +3893,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     function checkSwitchReturn (botID) {
       var bot = AppUsersManager.getUser(botID)
       if (!bot || !bot.pFlags.bot || !bot.bot_inline_placeholder) {
+      var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
         return qSync.when(false)
       }
       var key = 'inline_switch_pm' + botID
@@ -2972,6 +3916,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function switchInlineQuery (botID, toPeerString, query) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $rootScope.$broadcast('history_focus', {
         peerString: toPeerString,
         attachment: {
@@ -2983,6 +3935,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function switchInlineButtonClick (id, button) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var message = AppMessagesManager.getMessage(id)
       var botID = message.viaBotID || message.fromID
       if (button.pFlags && button.pFlags.same_peer) {
@@ -3004,6 +3964,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function callbackButtonClick (id, button) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var message = AppMessagesManager.getMessage(id)
       var botID = message.fromID
       var peerID = AppMessagesManager.getMessagePeer(message)
@@ -3026,6 +3994,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function gameButtonClick (id) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var message = AppMessagesManager.getMessage(id)
       var peerID = AppMessagesManager.getMessagePeer(message)
 
@@ -3045,6 +4021,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function showCallbackMessage(message, isAlert) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (typeof message != 'string' ||
         !message.length) {
         return
@@ -3066,6 +4050,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function sendInlineResult (peerID, qID, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var inlineResult = inlineResults[qID]
       if (inlineResult === undefined) {
         return false
@@ -3159,6 +4151,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function checkGeoLocationAccess (botID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var key = 'bot_access_geo' + botID
       return Storage.get(key).then(function (geoAccess) {
         if (geoAccess && geoAccess.granted) {
@@ -3196,6 +4196,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     })
 
     function popPendingSeqUpdate () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var nextSeq = updatesState.seq + 1
       var pendingUpdatesData = updatesState.pendingSeqUpdates[nextSeq]
       if (!pendingUpdatesData) {
@@ -3229,6 +4237,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function popPendingPtsUpdate (channelID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var curState = channelID ? getChannelState(channelID) : updatesState
       if (!curState.pendingPtsUpdates.length) {
         return false
@@ -3277,12 +4293,28 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function forceGetDifference () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!updatesState.syncLoading) {
         getDifference()
       }
     }
 
     function processUpdateMessage (updateMessage, fromMTProto) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // return forceGetDifference()
       var processOpts = {
         date: updateMessage.date,
@@ -3344,6 +4376,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getDifference () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // console.trace(dT(), 'Get full diff')
       if (!updatesState.syncLoading) {
         updatesState.syncLoading = true
@@ -3416,6 +4456,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getChannelDifference (channelID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var channelState = getChannelState(channelID)
       if (!channelState.syncLoading) {
         channelState.syncLoading = true
@@ -3485,6 +4533,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function addChannelState (channelID, pts) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!pts) {
         throw new Error('Add channel state without pts ' + channelID)
       }
@@ -3501,6 +4557,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getChannelState (channelID, pts) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (channelStates[channelID] === undefined) {
         addChannelState(channelID, pts)
       }
@@ -3508,6 +4572,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function processUpdate (update, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
       var channelID = false
       switch (update._) {
@@ -3654,6 +4726,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function saveUpdate (update) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $rootScope.$broadcast('apiUpdate', update)
     }
 
@@ -3712,6 +4792,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function sendUpdateStatusReq (offline) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var date = tsNow()
       if (offline && !lastOnlineUpdated ||
         !offline && (date - lastOnlineUpdated) < 50000 ||
@@ -3726,6 +4814,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function checkIDLE () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       toPromise && $timeout.cancel(toPromise)
       if ($rootScope.idle.isIDLE) {
         toPromise = $timeout(function () {
@@ -3738,6 +4834,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function isOtherDeviceActive () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!myOtherDeviceActive) {
         return false
       }
@@ -3949,10 +5053,26 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getNotifySettings () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return settings
     }
 
     function getPeerSettings (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (peerSettings[peerID] !== undefined) {
         return peerSettings[peerID]
       }
@@ -3966,6 +5086,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function setFavicon (href) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       href = href || 'favicon.ico'
       if (prevFavicon === href) {
         return
@@ -3981,12 +5109,28 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function savePeerSettings (peerID, settings) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // console.trace(dT(), 'peer settings', peerID, settings)
       peerSettings[peerID] = $q.when(settings)
       $rootScope.$broadcast('notify_settings', {peerID: peerID})
     }
 
     function updatePeerSettings (peerID, settings) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       savePeerSettings(peerID, settings)
 
       var inputSettings = angular.copy(settings)
@@ -4002,6 +5146,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getPeerMuted (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return getPeerSettings(peerID).then(function (peerNotifySettings) {
         return peerNotifySettings._ == 'peerNotifySettings' &&
           peerNotifySettings.mute_until * 1000 > tsNow()
@@ -4009,6 +5161,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function start () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       updateNotifySettings()
       $rootScope.$on('settings_changed', updateNotifySettings)
       WebPushApiManager.start()
@@ -4036,6 +5196,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function requestPermission () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       Notification.requestPermission()
       $($window).off('click', requestPermission)
     }
@@ -4162,6 +5330,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function playSound (volume) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var now = tsNow()
       if (nextSoundAt && now < nextSoundAt && prevSoundVolume == volume) {
         return
@@ -4177,6 +5353,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function notificationCancel (key) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var notification = notificationsShown[key]
       if (notification) {
         if (notificationsCount > 0) {
@@ -4197,6 +5381,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function notificationHide (key) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var notification = notificationsShown[key]
       if (notification) {
         try {
@@ -4210,10 +5402,26 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function notificationSoundReset (tag) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       delete soundsPlayed[tag]
     }
 
     function notificationsClear () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (notificationsMsSiteMode) {
         window.external.msSiteModeClearIconOverlay()
       } else {
@@ -4232,6 +5440,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function registerDevice (tokenData) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (registeredDevice &&
           angular.equals(registeredDevice, tokenData)) {
         return false
@@ -4248,6 +5464,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function unregisterDevice (tokenData) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!registeredDevice) {
         return false
       }
@@ -4263,6 +5487,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getVibrateSupport () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return vibrateSupport
     }
   })
@@ -4277,12 +5509,28 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getState (options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('account.getPassword', {}, options).then(function (result) {
         return result
       })
     }
 
     function updateSettings (state, settings) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var currentHashPromise
       var newHashPromise
       var params = {
@@ -4330,6 +5578,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function check (state, password, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return makePasswordHash(state.current_salt, password).then(function (passwordHash) {
         return MtpApiManager.invokeApi('auth.checkPassword', {
           password_hash: passwordHash
@@ -4338,16 +5594,40 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function requestRecovery (state, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('auth.requestPasswordRecovery', {}, options)
     }
 
     function recover (code, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('auth.recoverPassword', {
         code: code
       }, options)
     }
 
     function makePasswordHash (salt, password) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var passwordUTF8 = unescape(encodeURIComponent(password))
 
       var buffer = new ArrayBuffer(passwordUTF8.length)
@@ -4366,6 +5646,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var shownBoxes = 0
 
     function show (params, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (shownBoxes >= 1) {
         console.log('Skip error box, too many open', shownBoxes, params, options)
         return false
@@ -4390,6 +5678,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function alert (title, description) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return show({
         title: title,
         description: description
@@ -4397,6 +5693,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function confirm (params, options, data) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
       data = data || {}
       var scope = $rootScope.$new()
@@ -4432,6 +5736,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
 
   .service('PeersSelectService', function ($rootScope, $modal) {
     function selectPeer (options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new()
       scope.multiSelect = false
       scope.noMessages = true
@@ -4450,6 +5762,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function selectPeers (options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (Config.Mobile) {
         return selectPeer(options).then(function (peerString) {
           return [peerString]
@@ -4481,6 +5801,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
 
   .service('ContactsSelectService', function ($rootScope, $modal) {
     function select (multiSelect, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
 
       var scope = $rootScope.$new()
@@ -4514,6 +5842,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var checked = false
 
     function checkUpdate () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (checked) {
         return
       }
@@ -4547,6 +5883,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function showChangelog (lastVersion) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var $scope = $rootScope.$new()
       $scope.lastVersion = lastVersion
 
@@ -4609,6 +5953,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var confirmShown = false
 
     function switchLayout (mobile) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ConfigStorage.noPrefix()
       Storage.set({
         layout_selected: mobile ? 'mobile' : 'desktop',
@@ -4619,6 +5971,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function layoutCheck (e) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (confirmShown) {
         return
       }
@@ -4706,6 +6066,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     var tgAddrRegExp = /^(web\+)?tg:(\/\/)?(.+)/
 
     function checkLocationTgAddr () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var tgaddr = $routeParams.tgaddr
       if (tgaddr) {
         if (!tgaddr.match(/[=&?]/)) {
@@ -4721,6 +6089,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function handleTgProtoAddr (url, inner) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var matches
 
       if (matches = url.match(/^resolve\?domain=(.+?)(?:&(start|startgroup|post|game)=(.+))?$/)) {
@@ -4837,6 +6213,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function handleActivityMessage (name, data) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       console.log(dT(), 'Received activity', name, data)
 
       if (name == 'share' && data.url) {
@@ -4935,6 +6319,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openUrl(url) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var match = url.match(tgAddrRegExp)
       if (match) {
         if (handleTgProtoAddr(match[3], true)) {
@@ -4949,6 +6341,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function shareUrl (url, text, shareLink) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var options = {}
       if (shareLink) {
         options.shareLinkPromise = qSync.when(url)
@@ -4966,6 +6366,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function openChatInviteLink (hash) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('messages.checkChatInvite', {
         hash: hash
       }).then(function (chatInvite) {
@@ -5039,6 +6447,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getDraft (peerID, unsyncOnly) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // console.warn(dT(), 'get draft', peerID, unsyncOnly)
       return Storage.get('draft' + peerID).then(function (draft) {
         if (typeof draft === 'string') {
@@ -5066,6 +6482,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function getServerDraft (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var cached = cachedServerDrafts[peerID]
       if (cached !== undefined) {
         return cached
@@ -5074,6 +6498,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function saveDraft (peerID, apiDraft, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
       var draft = processApiDraft(apiDraft)
       cachedServerDrafts[peerID] = draft
@@ -5092,6 +6524,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function changeDraft (peerID, draft) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // console.warn(dT(), 'change draft', peerID, draft)
       if (!peerID) {
         console.trace('empty peerID')
@@ -5122,6 +6562,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function clearDraft (peerID, alsoSync) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       changeDraft(peerID)
       ApiUpdatesManager.processUpdateMessage({
         _: 'updateShort',
@@ -5138,6 +6586,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function draftsAreEqual (draft1, draft2) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var isEmpty1 = isEmptyDraft(draft1)
       var isEmpty2 = isEmptyDraft(draft2)
       if (isEmpty1 && isEmpty2) {
@@ -5156,6 +6612,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function isEmptyDraft (draft) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!draft) {
         return true
       }
@@ -5169,6 +6633,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function processApiDraft (draft) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!draft || draft._ != 'draftMessage') {
         return false
       }
@@ -5189,6 +6661,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
     }
 
     function syncDraft (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // console.warn(dT(), 'sync draft', peerID)
       getDraft(peerID, true).then(function (localDraft) {
         var serverDraft = cachedServerDrafts[peerID]

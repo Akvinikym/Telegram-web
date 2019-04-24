@@ -1,4 +1,12 @@
 ;(function initApplication () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
   // Prevent click-jacking
   try {
     if (window == window.top || window.chrome && chrome.app && chrome.app.window) {

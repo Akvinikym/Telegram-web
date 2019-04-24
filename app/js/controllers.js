@@ -71,6 +71,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function initPhoneCountry () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var langCode = (navigator.language || '').toLowerCase()
       var countryIso2 = Config.LangCountries[langCode]
       var shouldPregenerate = !Config.Navigator.mobile
@@ -102,6 +110,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectPhoneCountryByIso2 (countryIso2) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (countryIso2) {
         var i, country
         for (i = 0; i < Config.CountryCodes.length; i++) {
@@ -115,6 +131,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectCountry (country) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       selectedCountry = country
       if ($scope.credentials.phone_country != country.code) {
         $scope.credentials.phone_country = country.code
@@ -126,6 +150,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updateCountry () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var phoneNumber = (
         ($scope.credentials.phone_country || '') +
         ($scope.credentials.phone_number || '')
@@ -162,6 +194,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     var updatePasswordTimeout = false
 
     function saveAuth (result) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       MtpApiManager.setUserAuth(options.dcID, {
         id: result.user.id
       })
@@ -171,6 +211,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.sendCode = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $timeout.cancel(nextTimeout)
 
       var fullPhone = ($scope.credentials.phone_country || '') + ($scope.credentials.phone_number || '')
@@ -238,6 +286,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function applySentCode (sentCode) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.credentials.type = sentCode.type
       $scope.nextPending.type = sentCode.next_type || false
       $scope.nextPending.remaining = sentCode.timeout || false
@@ -263,6 +319,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function nextTimeoutCheck () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $timeout.cancel(nextTimeout)
       if (!$scope.nextPending.type ||
         $scope.nextPending.remaining === false) {
@@ -367,6 +431,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.checkPassword = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.progress.enabled = true
       return PasswordManager.check($scope.password, $scope.credentials.password, options).then(saveAuth, function (error) {
         $scope.progress.enabled = false
@@ -380,6 +452,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.forgotPassword = function (event) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       PasswordManager.requestRecovery($scope.password, options).then(function (emailRecovery) {
         var scope = $rootScope.$new()
         scope.recovery = emailRecovery
@@ -417,6 +497,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.resetAccount = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({
         type: 'RESET_ACCOUNT'
       }).then(function () {
@@ -440,6 +528,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updatePasswordState () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // $timeout.cancel(updatePasswordTimeout)
       // updatePasswordTimeout = false
       return PasswordManager.getState(options).then(function (result) {
@@ -536,6 +632,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     // setTimeout($scope.openSettings, 1000)
 
     $scope.openFaq = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var url = 'https://telegram.org/faq'
       switch (Config.I18n.locale) {
         case 'es-es':
@@ -561,12 +665,28 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.openContacts = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ContactsSelectService.selectContact().then(function (userID) {
         $scope.dialogSelect(AppUsersManager.getUserString(userID))
       })
     }
 
     $scope.openGroup = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ContactsSelectService.selectContacts({action: 'new_group'}).then(function (userIDs) {
         if (userIDs && 
             userIDs.length) {
@@ -585,6 +705,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.importContact = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       AppUsersManager.openImportContact().then(function (foundContact) {
         if (foundContact) {
           $rootScope.$broadcast('history_focus', {
@@ -595,11 +723,27 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.searchClear = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.search.query = ''
       $scope.$broadcast('search_clear')
     }
 
     $scope.dialogSelect = function (peerString, messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var params = {peerString: peerString}
       if (messageID) {
         params.messageID = messageID
@@ -615,6 +759,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.logOut = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: 'LOGOUT'}).then(function () {
         MtpApiManager.logOut().then(function () {
           location.hash = '/login'
@@ -624,10 +776,26 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.openChangelog = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ChangelogNotifyService.showChangelog(false)
     }
 
     $scope.showPeerInfo = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.curDialog.peerID > 0) {
         AppUsersManager.openUser($scope.curDialog.peerID)
       } else if ($scope.curDialog.peerID < 0) {
@@ -636,24 +804,72 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.toggleEdit = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.$broadcast('history_edit_toggle')
     }
     $scope.selectedFlush = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.$broadcast('history_edit_flush')
     }
     $scope.toggleMedia = function (mediaType) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.$broadcast('history_media_toggle', mediaType)
     }
     $scope.returnToRecent = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.$broadcast('history_return_recent')
     }
     $scope.toggleSearch = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.$broadcast('dialogs_search_toggle')
     }
 
     updateCurDialog()
 
     function updateCurDialog () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $modalStack.dismissAll()
       var addParams = pendingParams || {}
       pendingParams = false
@@ -785,6 +1001,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     function deleteDialog (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       for (var i = 0; i < $scope.dialogs.length; i++) {
         if ($scope.dialogs[i].peerID == peerID) {
           $scope.dialogs.splice(i, 1)
@@ -794,6 +1018,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function sortDialogs () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var myID = false
       if ($scope.forPeerSelect) {
         myID = AppUsersManager.getSelf().id
@@ -901,6 +1133,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     $scope.$watchCollection('search', function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.dialogs = []
       $scope.foundMessages = []
       searchMessages = !!$scope.searchPeer
@@ -915,10 +1155,26 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.importPhonebook = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       PhonebookContactsService.openPhonebookImport()
     }
 
     $scope.setSearchPeer = function (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.searchPeer = peerID || false
       $scope.searchClear()
       if (peerID) {
@@ -949,6 +1205,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 
     var searchTimeoutPromise
     function getDialogs (force) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var curJump = ++jump
 
       $timeout.cancel(searchTimeoutPromise)
@@ -1000,6 +1264,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function loadDialogs (force) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       offsetIndex = 0
       maxID = 0
       hasMore = false
@@ -1075,6 +1347,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function showMoreDialogs () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (contactsShown && (!hasMore || (!offsetIndex && !maxID))) {
         return
       }
@@ -1146,6 +1426,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function showMoreConversations () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       contactsShown = true
 
       var curJump = ++contactsJump
@@ -1303,6 +1591,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     var lessPending = false
 
     function applyDialogSelect (newDialog, oldDialog) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       peerID = $rootScope.selectedPeerID = newDialog.peerID
       var migratedToPeer = AppPeersManager.getPeerMigratedTo(peerID)
       if (migratedToPeer) {
@@ -1331,6 +1627,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function historiesQueuePush (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var pos = -1
       var maxLen = 10
       var i, history, diff
@@ -1356,6 +1660,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function historiesQueueFind (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var i
       for (i = 0; i < $scope.peerHistories.length; i++) {
         if ($scope.peerHistories[i].peerID == peerID) {
@@ -1366,6 +1678,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function historiesQueuePop (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var i
       for (i = 0; i < $scope.peerHistories.length; i++) {
         if ($scope.peerHistories[i].peerID == peerID) {
@@ -1377,6 +1697,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updateHistoryPeer (preload) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerData = AppPeersManager.getPeer(peerID)
       // console.log('update', preload, peerData)
       if (!peerData || peerData.deleted) {
@@ -1407,6 +1735,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updateBotActions () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var wasBotActions = $scope.historyState.botActions
       if (!peerID ||
         peerID < 0 ||
@@ -1434,6 +1770,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updateChannelActions () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var wasChannelActions = $scope.historyState.channelActions
       var channel
       if (peerID &&
@@ -1467,6 +1811,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function messageFocusHistory () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var history = historiesQueueFind(peerID)
 
       if (history &&
@@ -1481,6 +1833,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function showLessHistory () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!hasLess) {
         return
       }
@@ -1529,6 +1889,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function showMoreHistory () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!hasMore) {
         return
       }
@@ -1575,6 +1943,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function loadHistory (forceRecent) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.historyState.missedCount = 0
 
       hasMore = false
@@ -1677,6 +2053,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function showEmptyHistory () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       jump++
       safeReplaceObject($scope.historyPeer, {})
       safeReplaceObject($scope.state, {notSelected: true})
@@ -1687,15 +2071,39 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function startBot () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       AppMessagesManager.startBot(peerID, 0, $scope.curDialog.startParam)
       $scope.curDialog.startParam = false
     }
 
     function cancelBot () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       delete $scope.curDialog.startParam
     }
 
     function joinChannel () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       MtpApiManager.invokeApi('channels.joinChannel', {
         channel: AppChatsManager.getChannelInput(-peerID)
       }).then(function (result) {
@@ -1704,6 +2112,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function togglePeerMuted (muted) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       NotificationsManager.getPeerSettings(peerID).then(function (settings) {
         settings.mute_until = !muted ? 0 : 2000000000
         NotificationsManager.updatePeerSettings(peerID, settings)
@@ -1711,6 +2127,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function toggleMessage (messageID, $event) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.historyState.botActions ||
         $rootScope.idle.afterFocus) {
         return false
@@ -1868,6 +2292,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectInlineBot (botID, $event) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.historyState.canReply) {
         $scope.$broadcast('inline_bot_select', botID)
       }
@@ -1875,6 +2307,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectedCancel (noBroadcast) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.selectedMsgs = {}
       $scope.selectedCount = 0
       $scope.historyState.selectActions = false
@@ -1886,6 +2326,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectedFlush () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: 'HISTORY_FLUSH'}).then(function () {
         AppMessagesManager.flushHistory($scope.curDialog.peerID, true).then(function () {
           selectedCancel()
@@ -1894,6 +2342,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectedDelete (selectedMessageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var selectedMessageIDs = []
       if (selectedMessageID) {
         selectedMessageIDs.push(selectedMessageID)
@@ -1938,6 +2394,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function quickForward (msgID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       PeersSelectService.selectPeers({
         canSend: true,
         confirm_type: 'FORWARD_PEER',
@@ -1963,6 +2427,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectedForward (selectedMessageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var selectedMessageIDs = []
       if (selectedMessageID) {
         selectedMessageIDs.push(selectedMessageID)
@@ -2005,6 +2477,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectedReport (selectedMessageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var selectedMessageIDs = []
       if (selectedMessageID) {
         selectedMessageIDs.push(selectedMessageID)
@@ -2037,6 +2517,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectedReply (selectedMessageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!selectedMessageID && $scope.selectedCount == 1) {
         angular.forEach($scope.selectedMsgs, function (t, messageID) {
           selectedMessageID = messageID
@@ -2049,6 +2537,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function selectedEdit (selectedMessageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!selectedMessageID && $scope.selectedCount == 1) {
         angular.forEach($scope.selectedMsgs, function (t, messageID) {
           selectedMessageID = messageID
@@ -2061,6 +2557,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function toggleEdit () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.historyState.selectActions) {
         selectedCancel()
       } else {
@@ -2070,6 +2574,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function toggleMedia (mediaType) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (mediaType == 'search') {
         $rootScope.$broadcast('history_search', $scope.curDialog.peerID)
         return
@@ -2085,6 +2597,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function returnToRecent () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.historyFilter.mediaType) {
         toggleMedia()
       } else {
@@ -2519,6 +3039,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     var editMessageID = false
 
     function submitMessage (e) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.$broadcast('ui_message_before_send')
 
       $timeout(function () {
@@ -2533,6 +3061,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function sendMessage () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var text = $scope.draftMessage.text
 
       if (angular.isString(text) && text.length > 0) {
@@ -2560,6 +3096,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function editMessage () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var text = $scope.draftMessage.text
       text = RichTextProcessor.parseEmojis(text)
 
@@ -2575,6 +3119,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updateMentions () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerID = $scope.curDialog.peerID
 
       if (!peerID) {
@@ -2634,6 +3186,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updateCommands () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerID = $scope.curDialog.peerID
       if (!peerID) {
         safeReplaceObject($scope.commands, {})
@@ -2681,6 +3241,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function resetDraft (newPeer, prevPeer) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var prevPeerID = prevPeer ? AppPeersManager.getPeerID(prevPeer) : 0
       if (newPeer != prevPeer && prevPeerID) {
         $scope.$broadcast('ui_message_before_send')
@@ -2717,6 +3285,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function getDraft () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.curDialog.peerID) {
         var draftDataPromise
         if (editMessageID) {
@@ -2752,6 +3328,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function applyDraftAttachment (e, attachment) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       console.log(dT(), 'apply draft attach', attachment)
       if (!attachment || !attachment._) {
         return
@@ -2797,6 +3381,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function replySelect (messageID, byUser) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (editMessageID && byUser) {
         replyClear()
         return
@@ -2814,11 +3406,27 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function setEditDraft (messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       editMessageID = messageID
       getDraft()
     }
 
     function setEditLastMessage () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (editMessageID ||
           !$scope.curDialog.peerID) {
         return false
@@ -2835,6 +3443,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function replyClear (byUser) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (editMessageID) {
         editMessageID = false
         getDraft()
@@ -2859,6 +3475,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function fwdsClear () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.draftMessage.fwdMessages &&
         $scope.draftMessage.fwdMessages.length) {
         delete $scope.draftMessage.fwdMessages
@@ -2871,6 +3495,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function fwdsSend () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.draftMessage.fwdMessages &&
         $scope.draftMessage.fwdMessages.length) {
         var ids = $scope.draftMessage.fwdMessages.slice()
@@ -2882,6 +3514,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function toggleSlash ($event) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.draftMessage.text &&
         $scope.draftMessage.text.charAt(0) == '/') {
         $scope.draftMessage.text = ''
@@ -2893,6 +3533,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updateReplyKeyboard () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerID = $scope.curDialog.peerID
       var replyKeyboard = AppMessagesManager.getReplyKeyboard(peerID)
       if (replyKeyboard) {
@@ -2921,6 +3569,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function replyKeyboardToggle ($event) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var replyKeyboard = $scope.historyState.replyKeyboard
       if (replyKeyboard) {
         replyKeyboard.pFlags.hidden = !replyKeyboard.pFlags.hidden
@@ -2930,6 +3586,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function onMessageChange (newVal, prevVal, a) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // console.log('ctrl text changed', newVal, prevVal);
       if (newVal === '' && prevVal === '') {
         return
@@ -2964,6 +3628,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     var jump = 0
 
     function checkInlinePattern (message) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (getInlineResultsTO) {
         $timeout.cancel(getInlineResultsTO)
       }
@@ -3054,6 +3726,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function onTyping () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (AppPeersManager.isBroadcast($scope.curDialog.peerID)) {
         return false
       }
@@ -3066,6 +3746,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function onFilesSelected (newVal) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!angular.isArray(newVal) || !newVal.length) {
         return
       }
@@ -3090,6 +3778,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function onStickerSelected (newVal) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!newVal) {
         return
       }
@@ -3117,6 +3813,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function onCommandSelected (command) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!command) {
         return
       }
@@ -3139,6 +3843,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function onInlineResultSelected (qID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!qID) {
         return
       }
@@ -3270,6 +3982,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     updatePrevNext()
 
     function preloadPhotos (sign) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // var preloadOffsets = sign < 0 ? [-1,-2,1,-3,2] : [1,2,-1,3,-2]
       var preloadOffsets = sign < 0 ? [-1, -2] : [1, 2]
       var index = list.indexOf($scope.messageID)
@@ -3285,6 +4005,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updatePrevNext (count) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var index = list.indexOf($scope.messageID)
       if (hasMore) {
         if (count) {
@@ -3353,6 +4081,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 
     var jump = 0
     function movePosition (sign) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var curIndex = list.indexOf($scope.messageID)
       var index = curIndex >= 0 ? curIndex + sign : 0
       var curJump = ++jump
@@ -3391,6 +4127,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 
     var loadingPromise = false
     function loadMore () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (loadingPromise) return loadingPromise
 
       return loadingPromise = AppMessagesManager.getSearch(peerID, inputQuery, inputFilter, maxID).then(function (searchResult) {
@@ -3447,6 +4191,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 
     var jump = 0
     function movePosition (sign, deleteCurrent) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var curIndex = list.indexOf($scope.photoID)
       var index = curIndex >= 0 ? curIndex + sign : 0
       var curJump = ++jump
@@ -3484,6 +4236,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function preloadPhotos (sign) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var preloadOffsets = sign < 0 ? [-1, -2] : [1, 2]
       var index = list.indexOf($scope.photoID)
       angular.forEach(preloadOffsets, function (offset) {
@@ -3497,6 +4257,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 
     var loadingPromise = false
     function loadMore () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (loadingPromise) return loadingPromise
 
       return loadingPromise = AppPhotosManager.getUserPhotos($scope.userID, maxID).then(function (userpicResult) {
@@ -3521,6 +4289,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updatePrevNext (count) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var index = list.indexOf($scope.photoID)
       if (hasMore) {
         if (count) {
@@ -3949,11 +4725,27 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     function onChatUpdated (updates) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ApiUpdatesManager.processUpdateMessage(updates)
       $rootScope.$broadcast('history_focus', {peerString: $scope.chatFull.peerString})
     }
 
     $scope.leaveGroup = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: 'HISTORY_LEAVE_AND_FLUSH'}).then(function () {
         MtpApiManager.invokeApi('messages.deleteChatUser', {
           chat_id: AppChatsManager.getChatInput($scope.chatID),
@@ -3969,6 +4761,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.inviteToGroup = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var disabled = []
       angular.forEach($scope.chatFull.participants.participants, function (participant) {
         disabled.push(participant.user_id)
@@ -3990,6 +4790,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.migrateToSuperGroup = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: 'SUPERGROUP_MIGRATE'}).then(function () {
         MtpApiManager.invokeApi('messages.migrateChat', {
           chat_id: AppChatsManager.getChatInput($scope.chatID)
@@ -3998,6 +4806,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.kickFromGroup = function (userID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       MtpApiManager.invokeApi('messages.deleteChatUser', {
         chat_id: AppChatsManager.getChatInput($scope.chatID),
         user_id: AppUsersManager.getUserInput(userID)
@@ -4005,6 +4821,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.flushHistory = function (justClear) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: justClear ? 'HISTORY_FLUSH' : 'HISTORY_FLUSH_AND_DELETE'}).then(function () {
         AppMessagesManager.flushHistory(-$scope.chatID, justClear).then(function () {
           if (justClear) {
@@ -4018,6 +4842,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.inviteViaLink = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new()
       scope.chatID = $scope.chatID
 
@@ -4034,6 +4866,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     $scope.$watch('photo.file', onPhotoSelected)
 
     function onPhotoSelected (photo) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!photo || !photo.type || photo.type.indexOf('image') !== 0) {
         return
       }
@@ -4052,6 +4892,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.deletePhoto = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.photo.updating = true
       MtpApiManager.invokeApi('messages.editChatPhoto', {
         chat_id: AppChatsManager.getChatInput($scope.chatID),
@@ -4062,6 +4910,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.editTitle = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new()
       scope.chatID = $scope.chatID
 
@@ -4122,6 +4978,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 
 
     function onChatUpdated (updates) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ApiUpdatesManager.processUpdateMessage(updates)
       $rootScope.$broadcast('history_focus', {peerString: $scope.chatFull.peerString})
       if (updates &&
@@ -4133,6 +4997,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.leaveChannel = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return ErrorService.confirm({type: $scope.isMegagroup ? 'MEGAGROUP_LEAVE' : 'CHANNEL_LEAVE'}).then(function () {
         MtpApiManager.invokeApi('channels.leaveChannel', {
           channel: AppChatsManager.getChannelInput($scope.chatID)
@@ -4141,6 +5013,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.deleteChannel = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return ErrorService.confirm({type: $scope.isMegagroup ? 'MEGAGROUP_DELETE' : 'CHANNEL_DELETE'}).then(function () {
         MtpApiManager.invokeApi('channels.deleteChannel', {
           channel: AppChatsManager.getChannelInput($scope.chatID)
@@ -4149,6 +5029,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.flushHistory = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: 'HISTORY_FLUSH'}).then(function () {
         AppMessagesManager.flushHistory(-$scope.chatID).then(function () {
           $rootScope.$broadcast('history_focus', {peerString: $scope.chatFull.peerString})
@@ -4157,12 +5045,28 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.joinChannel = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       MtpApiManager.invokeApi('channels.joinChannel', {
         channel: AppChatsManager.getChannelInput($scope.chatID)
       }).then(onChatUpdated)
     }
 
     $scope.inviteToChannel = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var disabled = []
       angular.forEach(($scope.chatFull.participants || {}).participants || [], function (participant) {
         disabled.push(participant.user_id)
@@ -4207,6 +5111,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     $scope.$watch('photo.file', onPhotoSelected)
 
     function onPhotoSelected (photo) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!photo || !photo.type || photo.type.indexOf('image') !== 0) {
         return
       }
@@ -4225,6 +5137,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.deletePhoto = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.photo.updating = true
       MtpApiManager.invokeApi('channels.editPhoto', {
         channel: AppChatsManager.getChannelInput($scope.chatID),
@@ -4235,6 +5155,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.editChannel = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var scope = $rootScope.$new()
       scope.chatID = $scope.chatID
 
@@ -4247,10 +5175,26 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.goToHistory = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $rootScope.$broadcast('history_focus', {peerString: $scope.chatFull.peerString})
     }
 
     $scope.hasRights = function (action) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return AppChatsManager.hasRights($scope.chatID, action)
     }
   })
@@ -4287,12 +5231,28 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     var stopped = false
 
     $scope.openUserPic = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       profilePromise.then(function () {
         $scope.openPhoto($scope.profile.photo.photo_id, {p: $scope.profile.id})
       })
     }
 
     $scope.changePassword = function (options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
       if (options.action == 'cancel_email') {
         return ErrorService.confirm({type: 'PASSWORD_ABORT_SETUP'}).then(function () {
@@ -4313,6 +5273,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.showSessions = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $modal.open({
         templateUrl: templateUrl('sessions_list_modal'),
         controller: 'SessionsListModalController',
@@ -4321,6 +5289,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function updatePasswordState () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $timeout.cancel(updatePasswordTimeout)
       updatePasswordTimeout = false
       PasswordManager.getState().then(function (result) {
@@ -4337,6 +5313,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     function onPhotoSelected (photo) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!photo || !photo.type || photo.type.indexOf('image') !== 0) {
         return
       }
@@ -4371,6 +5355,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.deletePhoto = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.photo.updating = true
       MtpApiManager.invokeApi('photos.updateProfilePhoto', {
         id: {_: 'inputPhotoEmpty'}
@@ -4394,6 +5386,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.editProfile = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $modal.open({
         templateUrl: templateUrl('profile_edit_modal'),
         controller: 'ProfileEditModalController',
@@ -4402,6 +5402,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.changeUsername = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $modal.open({
         templateUrl: templateUrl('username_edit_modal'),
         controller: 'UsernameEditModalController',
@@ -4410,6 +5418,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.terminateSessions = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: 'TERMINATE_SESSIONS'}).then(function () {
         MtpApiManager.invokeApi('auth.resetAuthorizations', {})
       })
@@ -4518,10 +5534,26 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     $scope.openChangelog = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ChangelogNotifyService.showChangelog(false)
     }
 
     $scope.logOut = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: 'LOGOUT'}).then(function () {
         MtpApiManager.logOut().then(function () {
           location.hash = '/login'
@@ -4547,6 +5579,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     $scope.changelogShown = false
 
     $scope.canShowVersion = function (curVersion) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.changelogShown) {
         return true
       }
@@ -4560,6 +5600,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.showAllVersions = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.changelogShown = true
       $scope.changelogHidden = false
       $scope.$emit('ui_height')
@@ -4567,6 +5615,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.changeUsername = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $modal.open({
         templateUrl: templateUrl('username_edit_modal'),
         controller: 'UsernameEditModalController',
@@ -4600,6 +5656,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     $scope.updateProfile = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.profile.updating = true
       var flags = (1 << 0) | (1 << 1)
       MtpApiManager.invokeApi('account.updateProfile', {
@@ -4645,6 +5709,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     $scope.updateUsername = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.profile.updating = true
 
       MtpApiManager.invokeApi('account.updateUsername', {
@@ -4702,6 +5774,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     var stopped = false
 
     function updateSessions () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $timeout.cancel(updateSessionsTimeout)
       MtpApiManager.invokeApi('account.getAuthorizations').then(function (result) {
         $scope.sessionsLoaded = true
@@ -4728,12 +5808,28 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.terminateSession = function (hash) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: 'TERMINATE_SESSION'}).then(function () {
         MtpApiManager.invokeApi('account.resetAuthorization', {hash: hash}).then(updateSessions)
       })
     }
 
     $scope.terminateAllSessions = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       ErrorService.confirm({type: 'TERMINATE_SESSIONS'}).then(function () {
         MtpApiManager.invokeApi('auth.resetAuthorizations', {})
       })
@@ -4757,6 +5853,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     $scope.passwordSettings = {}
 
     $scope.updatePassword = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       delete $scope.passwordSettings.error_field
 
       var confirmPromise
@@ -4912,11 +6016,27 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function resetSelected () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.selectedContacts = {}
       $scope.selectedCount = 0
     }
 
     function updateContacts (query) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var curJump = ++jump
       var doneIDs = []
       AppUsersManager.getContacts(query).then(function (contactsList) {
@@ -4978,6 +6098,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.contactSelect = function (userID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.disabledContacts[userID]) {
         return false
       }
@@ -4994,6 +6122,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.submitSelected = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.selectedCount > 0) {
         var selectedUserIDs = []
         angular.forEach($scope.selectedContacts, function (t, userID) {
@@ -5004,6 +6140,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.deleteSelected = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.selectedCount > 0) {
         var selectedUserIDs = []
         angular.forEach($scope.selectedContacts, function (t, userID) {
@@ -5016,6 +6160,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.importContact = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       AppUsersManager.openImportContact().then(function (foundContact) {
         if (foundContact) {
           $rootScope.$broadcast('history_focus', {
@@ -5041,6 +6193,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.dialogMultiSelect = function(peerString, event) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerID = AppPeersManager.getPeerID(peerString)      
       $scope.multiSelect = $scope.selectedPeers[peerID] == undefined || 
         $scope.selectedPeers[peerID] != undefined && Object.keys($scope.selectedPeers).length > 1
@@ -5060,11 +6220,27 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.isSelected = function(peerString){
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerID = AppPeersManager.getPeerID(peerString)
       return $scope.selectedPeers[peerID] != undefined
     }
 
     $scope.dialogSelect = function (peerString) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerID
       if (!$scope.multiSelect) {
         var promise
@@ -5101,6 +6277,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.submitSelected = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.selectedCount > 0) {
         var selectedPeerStrings = []
         angular.forEach($scope.selectedPeers, function (t, peerID) {
@@ -5111,6 +6295,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.toggleSearch = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $scope.$broadcast('dialogs_search_toggle')
     }
   })
@@ -5119,6 +6311,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     $scope.group = {name: ''}
 
     $scope.createGroup = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!$scope.group.name) {
         return
       }
@@ -5155,6 +6355,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     $scope.group = {name: chat.title}
 
     $scope.updateGroup = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!$scope.group.name) {
         return
       }
@@ -5198,6 +6406,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     $scope.updateChannel = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!$scope.channel.title.length) {
         return
       }
@@ -5219,6 +6435,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function editTitle () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('channels.editTitle', {
         channel: AppChatsManager.getChannelInput($scope.chatID),
         title: $scope.channel.title
@@ -5228,6 +6452,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     function editAbout () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('channels.editAbout', {
         channel: AppChatsManager.getChannelInput($scope.chatID),
         about: $scope.channel.about
@@ -5242,12 +6474,28 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     var isMegagroup = AppChatsManager.isMegagroup($scope.chatID)
 
     function selectLink () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $timeout(function () {
         $scope.$broadcast('ui_invite_select')
       }, 100)
     }
 
     function updateLink (force) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var chat = AppChatsManager.getChat($scope.chatID)
       if (chat.username) {
         $scope.exportedInvite = {link: 'https://t.me/' + chat.username, short: true}
@@ -5284,6 +6532,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     $scope.phonebookAvailable = PhonebookContactsService.isAvailable()
 
     $scope.doImport = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.importContact && $scope.importContact.phone) {
         $scope.progress = {enabled: true}
         AppUsersManager.importContact(
@@ -5304,6 +6560,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.importPhonebook = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       PhonebookContactsService.openPhonebookImport().result.then(function (foundContacts) {
         if (foundContacts) {
           $modalInstance.close(foundContacts[0])
@@ -5382,6 +6646,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     function updateList () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var filtered = false
       var results = {}
 
@@ -5411,6 +6683,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     $scope.contactSelect = function (i) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!$scope.multiSelect) {
         return $modalInstance.close($scope.phonebook[i])
       }
@@ -5424,6 +6704,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.toggleSelection = function (fill) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!$scope.selectedCount || fill) {
         $scope.selectedCount = $scope.phonebook.length
         for (var i = 0; i < $scope.phonebook.length; i++) {
@@ -5436,6 +6724,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.submitSelected = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if ($scope.selectedCount <= 0) {
         $modalInstance.dismiss()
       }
@@ -5490,12 +6786,28 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     })
 
     $scope.toggleInstalled = function (installed) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       AppStickersManager.installStickerset(fullSet, !installed).then(function () {
         $scope.stickersetInstalled = installed
       })
     }
 
     $scope.chooseSticker = function (docID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var doc = AppDocsManager.getDoc(docID)
       if (!doc.id || !doc.access_hash || !$rootScope.selectedPeerID) {
         return
@@ -5513,6 +6825,14 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     }
 
     $scope.share = function () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       LocationParamsService.shareUrl('https://t.me/addstickers/' + $scope.stickerset.short_name, $scope.stickerset.title)
     }
   })

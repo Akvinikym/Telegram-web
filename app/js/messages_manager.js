@@ -59,6 +59,14 @@ angular.module('myApp.services')
     var migratedToFrom = {}
 
     function getConversations (query, offsetIndex, limit) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var curDialogStorage = dialogsStorage
       var isSearch = angular.isString(query) && query.length
 
@@ -118,6 +126,14 @@ angular.module('myApp.services')
     }
 
     function getConversation(peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var foundDialog = getDialogByPeerID(peerID)
       if (foundDialog.length) {
         return $q.when(foundDialog[0])
@@ -131,6 +147,14 @@ angular.module('myApp.services')
     }
 
     function getDialogByPeerID (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       for (var i = 0; i < dialogsStorage.dialogs.length; i++) {
         if (dialogsStorage.dialogs[i].peerID == peerID) {
           return [dialogsStorage.dialogs[i], i]
@@ -141,6 +165,14 @@ angular.module('myApp.services')
     }
 
     function saveConversation (dialog) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerID = AppPeersManager.getPeerID(dialog.peer)
       if (!peerID) {
         return false
@@ -249,6 +281,14 @@ angular.module('myApp.services')
     }
 
     function getTopMessages (limit) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var first = true
       var dialogs = dialogsStorage.dialogs
       var offsetDate = 0
@@ -312,10 +352,26 @@ angular.module('myApp.services')
     }
 
     function generateDialogPinnedDate() {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return 0x7fffff00 + ((pinnedIndex++) & 0xff)
     }
 
     function generateDialogIndex (date) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (date === undefined) {
         date = tsNow(true) + ServerTimeManager.serverTimeOffset
       }
@@ -323,6 +379,14 @@ angular.module('myApp.services')
     }
 
     function pushDialogToStorage (dialog, offsetDate) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var dialogs = dialogsStorage.dialogs
       var pos = getDialogByPeerID(dialog.peerID)[1]
       if (pos !== undefined) {
@@ -359,6 +423,14 @@ angular.module('myApp.services')
     }
 
     function requestHistory (peerID, maxID, limit, offset) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var isChannel = AppPeersManager.isChannel(peerID)
       var isMegagroup = isChannel && AppPeersManager.isMegagroup(peerID)
 
@@ -441,6 +513,14 @@ angular.module('myApp.services')
     }
 
     function fillHistoryStorage (peerID, maxID, fullLimit, historyStorage) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // console.log('fill history storage', peerID, maxID, fullLimit, angular.copy(historyStorage))
       var offset = (migratedFromTo[peerID] && !maxID) ? 1 : 0
       return requestHistory(peerID, maxID, fullLimit, offset).then(function (historyResult) {
@@ -502,6 +582,14 @@ angular.module('myApp.services')
     }
 
     function wrapHistoryResult (peerID, result) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var unreadOffset = result.unreadOffset
       if (unreadOffset) {
         var i
@@ -518,6 +606,14 @@ angular.module('myApp.services')
     }
 
     function migrateChecks (migrateFrom, migrateTo) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!migratedFromTo[migrateFrom] &&
         !migratedToFrom[migrateTo] &&
         AppChatsManager.hasChat(-migrateTo)) {
@@ -541,12 +637,28 @@ angular.module('myApp.services')
     }
 
     function convertMigratedPeer (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (migratedFromTo[peerID]) {
         return migratedFromTo[peerID]
       }
     }
 
     function getHistory (peerID, maxID, limit, backLimit, prerendered) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (migratedFromTo[peerID]) {
         peerID = migratedFromTo[peerID]
       }
@@ -690,10 +802,26 @@ angular.module('myApp.services')
     }
 
     function getReplyKeyboard (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return (historiesStorage[peerID] || {}).reply_markup || false
     }
 
     function mergeReplyKeyboard (historyStorage, message) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // console.log('merge', message.mid, message.reply_markup, historyStorage.reply_markup)
       if (!message.reply_markup &&
         !message.pFlags.out &&
@@ -767,6 +895,14 @@ angular.module('myApp.services')
     }
 
     function getSearch (peerID, query, inputFilter, maxID, limit) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       peerID = peerID ? parseInt(peerID) : 0
       var foundMsgs = []
       var useSearchCache = !query
@@ -963,6 +1099,14 @@ angular.module('myApp.services')
     }
 
     function getMessage (messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return messagesStorage[messageID] || {
         _: 'messageEmpty',
         deleted: true,
@@ -971,6 +1115,14 @@ angular.module('myApp.services')
     }
 
     function canMessageBeEdited(message) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var goodMedias = [
         'messageMediaPhoto',
         'messageMediaDocument',
@@ -995,6 +1147,14 @@ angular.module('myApp.services')
     }
 
     function canEditMessage(messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!messagesStorage[messageID]) {
         return false
       }
@@ -1014,6 +1174,14 @@ angular.module('myApp.services')
     }
 
     function canReportMessage(messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!messagesStorage[messageID]) {
         return false
       }
@@ -1027,6 +1195,14 @@ angular.module('myApp.services')
     }
 
     function getMessageEditData(messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!canEditMessage(messageID)) {
         return $q.reject()
       }
@@ -1055,6 +1231,14 @@ angular.module('myApp.services')
     }
 
     function canRevokeMessage(messageID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (messageID <= 0 ||
           !messagesStorage[messageID]) {
         return false
@@ -1084,6 +1268,14 @@ angular.module('myApp.services')
     }
 
     function deleteMessages (messageIDs, revoke) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var splitted = AppMessagesIDsManager.splitMessageIDsByChannels(messageIDs)
       var promises = []
       angular.forEach(splitted.msgIDs, function (msgIDs, channelID) {
@@ -1147,6 +1339,14 @@ angular.module('myApp.services')
     }
 
     function getMessageShareLink (fullMsgID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var info = AppMessagesIDsManager.getMessageIDInfo(fullMsgID)
       var msgID = info[0]
       var channelID = info[1]
@@ -1170,6 +1370,14 @@ angular.module('myApp.services')
     }
 
     function readHistory (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       // console.trace('start read')
       var isChannel = AppPeersManager.isChannel(peerID)
       var historyStorage = historiesStorage[peerID]
@@ -1263,6 +1471,14 @@ angular.module('myApp.services')
     }
 
     function readMessages (messageIDs) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var splitted = AppMessagesIDsManager.splitMessageIDsByChannels(messageIDs)
       angular.forEach(splitted.msgIDs, function (msgIDs, channelID) {
         if (channelID > 0) {
@@ -1300,6 +1516,14 @@ angular.module('myApp.services')
     }
 
     function doFlushHistory (inputPeer, justClear) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var flags = 0
       if (justClear) {
         flags |= 1
@@ -1325,6 +1549,14 @@ angular.module('myApp.services')
     }
 
     function flushHistory (peerID, justClear) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (AppPeersManager.isChannel(peerID)) {
         return getHistory(peerID, false, 1).then(function (historyResult) {
           var channelID = -peerID
@@ -1360,6 +1592,14 @@ angular.module('myApp.services')
     }
 
     function saveMessages (apiMessages, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
       angular.forEach(apiMessages, function (apiMessage) {
         if (apiMessage.pFlags === undefined) {
@@ -1562,6 +1802,14 @@ angular.module('myApp.services')
     }
 
     function sendText (peerID, text, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!angular.isString(text)) {
         return
       }
@@ -1754,6 +2002,14 @@ angular.module('myApp.services')
     }
 
     function sendFile (peerID, file, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       peerID = AppPeersManager.getPeerMigratedTo(peerID) || peerID
       options = options || {}
       var messageID = tempID--
@@ -1939,6 +2195,14 @@ angular.module('myApp.services')
     }
 
     function sendOther (peerID, inputMedia, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       peerID = AppPeersManager.getPeerMigratedTo(peerID) || peerID
       options = options || {}
 
@@ -2142,6 +2406,14 @@ angular.module('myApp.services')
     }
 
     function forwardMessages (peerID, mids, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       peerID = AppPeersManager.getPeerMigratedTo(peerID) || peerID
       mids = mids.sort()
       options = options || {}
@@ -2191,6 +2463,14 @@ angular.module('myApp.services')
     }
 
     function reportMessages (mids, reason) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       mids = mids.sort()
       var splitted = AppMessagesIDsManager.splitMessageIDsByChannels(mids)
       var promises = []
@@ -2210,6 +2490,14 @@ angular.module('myApp.services')
     }
 
     function startBot (botID, chatID, startParam) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var peerID = chatID ? -chatID : botID
       if (startParam) {
         var randomID = bigint(nextRandomInt(0xFFFFFFFF)).shiftLeft(32).add(bigint(nextRandomInt(0xFFFFFFFF))).toString()
@@ -2260,6 +2548,14 @@ angular.module('myApp.services')
     }
 
     function shareGame (botID, peerID, inputGame) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var randomID = bigint(nextRandomInt(0xFFFFFFFF)).shiftLeft(32).add(bigint(nextRandomInt(0xFFFFFFFF))).toString()
       return MtpApiManager.invokeApi('messages.sendMedia', {
         flags: 0,
@@ -2275,6 +2571,14 @@ angular.module('myApp.services')
     }
 
     function cancelPendingMessage (randomID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var pendingData = pendingByRandomID[randomID]
 
       console.log('pending', randomID, pendingData)
@@ -2307,6 +2611,14 @@ angular.module('myApp.services')
     }
 
     function finalizePendingMessage (randomID, finalMessage) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var pendingData = pendingByRandomID[randomID]
       // console.log('pdata', randomID, pendingData)
 
@@ -2352,6 +2664,14 @@ angular.module('myApp.services')
     }
 
     function finalizePendingMessageCallbacks(tempID, mid) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var callbacks = tempFinalizeCallbacks[tempID]
       console.warn(dT(), callbacks, tempID)
       if (callbacks !== undefined) {
@@ -2363,6 +2683,14 @@ angular.module('myApp.services')
     }
 
     function getInputEntities(entities) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var sendEntites = angular.copy(entities)
       angular.forEach(sendEntites, function (entity) {
         if (entity._ == 'messageEntityMentionName') {
@@ -2374,6 +2702,14 @@ angular.module('myApp.services')
     }
 
     function editMessage(messageID, text) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!angular.isString(text) ||
           !canEditMessage(messageID)) {
         return $q.reject()
@@ -2423,6 +2759,14 @@ angular.module('myApp.services')
     }
 
     function getMessagePeer (message) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var toID = message.to_id && AppPeersManager.getPeerID(message.to_id) || 0
 
       if (toID < 0) {
@@ -2434,6 +2778,14 @@ angular.module('myApp.services')
     }
 
     function wrapForDialog (msgID, dialog) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var useCache = msgID && dialog !== undefined
       var unreadCount = dialog && dialog.unread_count
 
@@ -2485,6 +2837,14 @@ angular.module('myApp.services')
     }
 
     function wrapSingleMessage (msgID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (messagesStorage[msgID]) {
         return wrapForDialog(msgID)
       }
@@ -2498,10 +2858,26 @@ angular.module('myApp.services')
     }
 
     function clearDialogCache (msgID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       delete messagesForDialogs[msgID]
     }
 
     function wrapForHistory (msgID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (messagesForHistory[msgID] !== undefined) {
         return messagesForHistory[msgID]
       }
@@ -2603,6 +2979,14 @@ angular.module('myApp.services')
     }
 
     function wrapReplyMarkup (replyMarkup, fromID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!replyMarkup ||
         replyMarkup._ == 'replyKeyboardHide') {
         return false
@@ -2633,6 +3017,14 @@ angular.module('myApp.services')
     }
 
     function wrapMessageText(msgID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var message = getMessage(msgID)
       var fromUser = message.from_id && AppUsersManager.getUser(message.from_id)
       var fromBot = fromUser && fromUser.pFlags.bot && fromUser.username || false
@@ -2658,6 +3050,14 @@ angular.module('myApp.services')
     }
 
     function fetchSingleMessages () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (fetchSingleMessagesTimeout !== false) {
         clearTimeout(fetchSingleMessagesTimeout)
         fetchSingleMessagesTimeout = false
@@ -2693,6 +3093,14 @@ angular.module('myApp.services')
     }
 
     function incrementMessageViews () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (incrementMessageViewsTimeout !== false) {
         clearTimeout(incrementMessageViewsTimeout)
         incrementMessageViewsTimeout = false
@@ -2734,6 +3142,14 @@ angular.module('myApp.services')
     }
 
     function regroupWrappedHistory (history, limit) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!history || !history.length) {
         return false
       }
@@ -2841,6 +3257,14 @@ angular.module('myApp.services')
     }
 
     function getMessageThumb (message, thumbWidth, thumbHeight) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var thumbPhotoSize
       var sticker = false
       if (message.media) {
@@ -2878,6 +3302,14 @@ angular.module('myApp.services')
     }
 
     function incrementMaxSeenID (maxID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!maxID || !(!maxSeenID || maxID > maxSeenID)) {
         return false
       }
@@ -2890,6 +3322,14 @@ angular.module('myApp.services')
     }
 
     function notifyAboutMessage (message, options) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       options = options || {}
 
       var peerID = getMessagePeer(message)
@@ -3109,6 +3549,14 @@ angular.module('myApp.services')
     var newUpdatesAfterReloadToHandle = {}
 
     function handleNewMessages () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $timeout.cancel(newMessagesHandlePromise)
       newMessagesHandlePromise = false
       $rootScope.$broadcast('history_multiappend', newMessagesToHandle)
@@ -3116,6 +3564,14 @@ angular.module('myApp.services')
     }
 
     function handleNewDialogs () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $timeout.cancel(newDialogsHandlePromise)
       newDialogsHandlePromise = false
       var newMaxSeenID = 0
@@ -3138,6 +3594,14 @@ angular.module('myApp.services')
     }
 
     function handleNotifications () {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       $timeout.cancel(notificationsHandlePromise)
       notificationsHandlePromise = false
 
@@ -3163,6 +3627,14 @@ angular.module('myApp.services')
     }
 
     function handleUpdate(update) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       switch (update._) {
         case 'updateMessageID':
           var randomID = update.random_id
@@ -3762,6 +4234,14 @@ angular.module('myApp.services')
     })
 
     function reloadConversation (peerID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       return MtpApiManager.invokeApi('messages.getPeerDialogs', {
         peers: [
           AppPeersManager.getInputPeerByID(peerID)
@@ -3770,6 +4250,14 @@ angular.module('myApp.services')
     }
 
     function applyConversations(dialogsResult) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       AppUsersManager.saveApiUsers(dialogsResult.users)
       AppChatsManager.saveApiChats(dialogsResult.chats)
       saveMessages(dialogsResult.messages)
@@ -3917,6 +4405,14 @@ angular.module('myApp.services')
     }
 
     function getFullMessageID (msgID, channelID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!channelID || msgID <= 0) {
         return msgID
       }
@@ -3932,6 +4428,14 @@ angular.module('myApp.services')
     }
 
     function getMessageIDInfo (fullMsgID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (fullMsgID < fullMsgIDModulus) {
         return [fullMsgID, 0]
       }
@@ -3942,6 +4446,14 @@ angular.module('myApp.services')
     }
 
     function getMessageLocalID (fullMsgID) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       if (!fullMsgID) {
         return 0
       }
@@ -3949,6 +4461,14 @@ angular.module('myApp.services')
     }
 
     function splitMessageIDsByChannels (mids) {
+    var sCallerName;
+    {
+        let re = /([^(]+)@|at ([^(]+) \(/g;
+        let aRegexResult = re.exec(new Error().stack);
+        sCallerName = aRegexResult[1] || aRegexResult[2];
+    }
+    console.log('FUNCTION CALL:  ' + sCallerName);
+
       var msgIDsByChannels = {}
       var midsByChannels = {}
       var i
